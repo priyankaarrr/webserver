@@ -27,44 +27,38 @@ Serving the HTML pages.
 Testing the webserver
 
 ## PROGRAM:
-```py
-from http.server import HTTPServer,BaseHTTPRequestHandler
+```
+from http.server import HTTPServer, BaseHTTPRequestHandler
+content = """
 
-content='''
-<!doctype html>
+content = """
 <html>
 <head>
-<title> My Web Server</title>
+<title>webservers</title>
 </head>
 <body>
-<h1>Top Five Web Application Development Frameworks</h1>
-<h2>1.Django</h2>
-<h2>2. MEAN Stack</h2>
-<h2>3. React </h2>
-<h2>4.MERN Stack </h2>
-<h2>5.ASP.Net </h2>
+<h1>Top Five Web Apllication Development Framework</h1>
+<h1>1.Django</h1>
+<h2>2.MEAN Stack</h2>
+<h3>3.React<h3>
 </body>
 </html>
-'''
+"""
 
-class MyServer(BaseHTTPRequestHandler):
+class HelloHandler(BaseHTTPRequestHandler):
     def do_GET(self):
-        print("Get request received...")
-        self.send_response(200) 
-        self.send_header("content-type", "text/html")       
+        self.send_response(200)
+        self.send_header('Content-type', 'text/html; charset=utf-8')
         self.end_headers()
         self.wfile.write(content.encode())
 
-print("This is my webserver") 
-server_address =('',8000)
-httpd = HTTPServer(server_address,MyServer)
+server_address = ('', 80)
+httpd = HTTPServer(server_address, HelloHandler)
 httpd.serve_forever()
 ```
 ## OUTPUT:
-### Server output
-![serveroutput](serveroutput.png)
-### Client output
-![clientoutput](clientoutput.png)
+![WhatsApp Image 2023-12-24 at 07 52 37_714dd086](https://github.com/priyankaarrr/webserver/assets/147475464/b6a946aa-584a-482a-ab29-35e302167cae)
+
 
 ## RESULT:
 The program is executed succesfully
